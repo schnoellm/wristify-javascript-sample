@@ -2,7 +2,18 @@
 This is a sample implementation in Javascript to show how an endpoint provider can be implemented using the API for the Wristify Garmin widget.
 For information on the actual API description see [wristify-api-and-samples](https://github.com/schnoellm/wristify-api-and-samples).
 
-## How to run
+## How to run on glitch.com
+
+1. Use the following button to start a temporary instance of this sample on [glitch.com](https://glitch.com).
+[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/schnoellm/wristify-javascript-sample)
+
+2. Once the glitch instance is up and running, use your temporary url of that instance (e.g. `https://universal-pollen-helenium.glitch.me/`) and use it with the Wristify Garmin app or with the `curl` commands below.
+Make sure to append `api/v1/endpoints` to the path (e.g. `https://universal-pollen-helenium.glitch.me/api/v1/endpoints`).
+3. Try to adapt the sample and play around with different response objects.
+4. Run your own endpoint provider to automate any tasks with the help of your Garmin watch and the Wristify Widget.
+
+
+## How to run locally
 1. Clone the whole repository `git clone https://github.com/schnoellm/wristify-javascript-sample.git`
 2. Change the directory `cd wristify-demo/sample-endpoint-providers/javascript-sample`
 3. Install dependencies `npm install`
@@ -11,6 +22,7 @@ For information on the actual API description see [wristify-api-and-samples](htt
 
 ## How to use
 Use curl to interact with the sample implementation. The Wristify Garmin Widget performs the same requests.
+Use either `localhost` or the temporary url of your `glitch.me` instance.
 
 **List available endpoints**
 - Use curl to list the available endpoints  
