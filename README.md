@@ -5,7 +5,8 @@ For information on the actual API description see [wristify-api-and-samples](htt
 ## How to run on glitch.com
 
 1. Use the following button to start a temporary instance of this sample on [glitch.com](https://glitch.com).
-[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/schnoellm/wristify-javascript-sample)
+
+    [![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/schnoellm/wristify-javascript-sample)
 
 2. Once the glitch instance is up and running, use your temporary url of that instance (e.g. `https://universal-pollen-helenium.glitch.me/`) and use it with the Wristify Garmin app or with the `curl` commands below.
 Make sure to append `api/v1/endpoints` to the path (e.g. `https://universal-pollen-helenium.glitch.me/api/v1/endpoints`).
