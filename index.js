@@ -186,13 +186,13 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
 
         case "color-selection":
 
-            if ("parameter" in body) {
-                if (body.parameter) {
-                    selectedColor = body.parameter;
-                    payload = { text: `You selected the color:\n ${body.parameter}` };
-                } else {
+            if (body.parameter) {
+                if (body.parameter == "reset") {
                     selectedColor = null;
                     payload = { text: "You have reset the color" };
+                } else {
+                    selectedColor = body.parameter;
+                    payload = { text: `You selected the color:\n ${body.parameter}` };
                 }
             } else {
                 payload = [{"text": "Select your favourite color:"},
@@ -200,7 +200,7 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
                         {name:"blue", parameter: "blue", description:"I like the color blue"},
                         {name:"red", parameter: "red", description:"I like the color red"},
                         {name:"green", parameter: "green", description:"I like the color green"},
-                        {name:"reset", parameter: null, description:"Reset the selected color"},
+                        {name:"reset", parameter: "reset", description:"Reset the selected color"},
                     ]
                 }]
             }
