@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "javascript-sample",
-            "program": "${workspaceFolder}/main.js",
+            "program": "${workspaceFolder}/index.js",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
