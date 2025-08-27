@@ -6,7 +6,15 @@ const app = express();
 app.use(bodyParser.json());
 const port = 3000;
 
-const apiRouter = express.Router()
+const shutdown = () => {
+    console.log("Shutting donw ...");
+    process.exit(0);
+};
+
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);
+
+const apiRouter = express.Router();
 
 apiRouter.get("/endpoints", (req, res) => {
 

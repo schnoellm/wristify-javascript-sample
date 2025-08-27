@@ -16,10 +16,18 @@ Make sure to append `api/v1/endpoints` to the path (e.g. `https://universal-poll
 
 ## How to run locally
 1. Clone the whole repository `git clone https://github.com/schnoellm/wristify-javascript-sample.git`
-2. Change the directory `cd wristify-demo/sample-endpoint-providers/javascript-sample`
+2. Change the directory `cd wristify-javascript-sample`
 3. Install dependencies `npm install`
 4. Run the sample `npm start`
 5. By default it will run on port `3000`
+
+## How to run it locally using docker/podman
+1. Clone the whole repository `git clone https://github.com/schnoellm/wristify-javascript-sample.git`
+2. Change the directory `cd wristify-javascript-sample`
+3. Build the image `podman build -t wristify-javascript-sample .`
+4. Run the container `podman run --rm -p 3000:3000 wristify-javascript-sample`
+5. By default it will run on port `3000`
+
 
 ## How to use
 Use curl to interact with the sample implementation. The Wristify Garmin Widget performs the same requests.
