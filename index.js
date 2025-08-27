@@ -2,6 +2,8 @@ import express from 'express'
 import basicAuth from 'express-basic-auth'
 import bodyParser from 'body-parser'
 
+var selectedColor = null;
+
 const app = express();
 app.use(bodyParser.json());
 const port = 3000;
@@ -21,38 +23,52 @@ apiRouter.get("/endpoints", (req, res) => {
     const data = {
         endpoints: [
             {
-                id: "text-sample-1",
-                name: "text-sample-1",
-                description: "text-sample-1"
+                id: "instructions",
+                name: "Instructions",
+                description: "Explains Wristify"
             },
             {
-                id: "text-sample-pages",
-                name: "text-sample-pages",
-                description: "text-sample-pages"
+                id: "text-sample",
+                name: "Sample text",
+                description: "Shows a sample text"
             },
             {
                 id: "trend-sample",
-                name: "trend-sample",
-                description: "trend-sample"
+                name: "Sample trend",
+                description: "Displays a sample trend"
             },
             {
                 id: "image-sample",
-                name: "image-sample",
-                description: "image-sample"
+                name: "Image sample",
+                description: "Displays a random image"
             },
             {
                 id: "action-sample",
-                name: "action-sample",
-                description: "action-sample"
+                name: "Sample Action",
+                description: "Demonstrates actions to select from"
+            },
+            {
+                id: "color-status",
+                name: "Selected color",
+                description: "Shows the selected color"
+            },
+            {
+                id: "color-action",
+                name: "Color Action",
+                description: "Choose a color"
             }
         ],
         groups: [
             {
-                name: "first-group",
-                endpoints: ["text-sample-1","text-sample-pages"]
+                name: "How to use",
+                endpoints: ["instructions"]
             },
             {
-                name: "second-group",
+                name: "First group",
+                endpoints: ["text-sample","color-status", "color-action"]
+            },
+            {
+                name: "Second group",
                 endpoints:["trend-sample","image-sample","action-sample"]
             }
         ]
@@ -69,15 +85,21 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
 
 
     switch (endpointId) {
-        case "text-sample-1":
+        case "instructions":
+            payload = [
+                {text: "Wristify allows you to easily access your custom REST web service from your Garmin watch."},
+                {text: "In order to do so, you need to implement and host your own REST web service."},
+                {text: "This way you can implement custom actions and provide desired information and data to the watch via a predefined API specification."},
+                {text: "To implement your own service, check out the description in the garmin store and the instructions in the linked GitHub repository."},
+                {text: "The sample code of this API, which you are currently accessing, is available as nodejs sample on GitHub as well."},
+                {text: "Happy coding!"}
+            ]
+            break;
+
+        case "text-sample":
             payload = {
                 text: "Some sample text, that can be displayed on the Wristify Garmin Widget."
             }
-            break;
-
-        case "text-sample-pages":
-            payload = [{ text: "Another text based sample, that can \nalso show \nthe use of linebreaks." },
-                {text: "A second page, that can be used to describe another section of text."}]
             break;
 
         case "trend-sample":
@@ -150,6 +172,39 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
                     }
                 }
             ];
+            break;
+
+        case "color-status":
+
+            if (selectedColor) {
+                payload = { text: `The selected color is ${selectedColor}` };
+            } else {
+                payload = {"text": "No color was selected so far"}
+            }
+            
+            break;
+
+        case "color-action":
+
+            if ("parameter" in body) {
+                if (body.parameter) {
+                    selectedColor = body.parameter;
+                    payload = { text: `You selected color:\n ${body.parameter}` };
+                } else {
+                    selectedColor = null;
+                    payload = { text: "You have reset the color" };
+                }
+            } else {
+                payload = [{"text": "Select your favourite color:"},
+                    { actions: [
+                        {name:"blue", parameter: "blue", description:"I like the color blue"},
+                        {name:"red", parameter: "red", description:"I like the color red"},
+                        {name:"green", parameter: "green", description:"I like the color green"},
+                        {name:"reset", parameter: null, description:"Reset the selected color"},
+                    ]
+                }]
+            }
+            
             break;
 
         case "action-sample":

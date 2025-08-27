@@ -2,17 +2,17 @@
 This is a sample implementation in Javascript to show how an endpoint provider can be implemented using the API for the Wristify Garmin widget.
 For information on the actual API description see [wristify-api-and-samples](https://github.com/schnoellm/wristify-api-and-samples).
 
-## How to run on glitch.com
+## How to use the ready-made demo with Wristify
+1. The code of this sample implementation is hosted on vercel.app on the following domain: https://wristify-javascript-sample.vercel.app
+2. You can use that instance for checking out Wristify and get an idea of the possibilities.
+3. Use the following information to configure Wristify using the Connect IQ mobile app. Navigate to the app settings and enter the respective configuration:
+    - Endpoint url: `https://wristify-javascript-sample.vercel.app/api/v1/endpoints`
+    - Username: `username`
+    - Password: `password`
+4. Save the configuration and restart the Wristify widget on your watch.
+5. You can then access the sample implementation and check out the possibilities of Wristify.
 
-1. Use the following button to start a temporary instance of this sample on [glitch.com](https://glitch.com).
-
-    [![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/schnoellm/wristify-javascript-sample)
-
-2. Once the glitch instance is up and running, use your temporary url of that instance (e.g. `https://universal-pollen-helenium.glitch.me/`) and use it with the Wristify Garmin app or with the `curl` commands below.
-Make sure to append `api/v1/endpoints` to the path (e.g. `https://universal-pollen-helenium.glitch.me/api/v1/endpoints`).
-3. Try to adapt the sample and play around with different response objects.
-4. Run your own endpoint provider to automate any tasks with the help of your Garmin watch and the Wristify Widget.
-
+**Important:** Keep in mind that you need to implement and deploy your own REST based web service in order to achieve customized functionality.
 
 ## How to run locally
 1. Clone the whole repository `git clone https://github.com/schnoellm/wristify-javascript-sample.git`
