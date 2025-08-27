@@ -48,14 +48,14 @@ apiRouter.get("/endpoints", (req, res) => {
                 description: "Demonstrates actions to select from"
             },
             {
-                id: "color-status",
-                name: "Selected color",
-                description: "Shows the selected color"
+                id: "color-selection",
+                name: "Color selection",
+                description: "Choose a color for the trend"
             },
-            {
-                id: "color-action",
-                name: "Color Action",
-                description: "Choose a color"
+                        {
+                id: "current-color",
+                name: "Current color",
+                description: "Shows the currently selected color"
             }
         ],
         groups: [
@@ -65,11 +65,11 @@ apiRouter.get("/endpoints", (req, res) => {
             },
             {
                 name: "First group",
-                endpoints: ["text-sample","color-status", "color-action"]
+                endpoints: ["trend-sample", "color-selection", "current-color"]
             },
             {
                 name: "Second group",
-                endpoints:["trend-sample","image-sample","action-sample"]
+                endpoints:["text-sample","image-sample","action-sample"]
             }
         ]
     }
@@ -107,7 +107,7 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
                 data: [
                     {
                         name: "Line 1",
-                        color: "red",
+                        color: selectedColor ?? "yellow",
                         data: [
                             {
                                 t: 1741906800,
@@ -133,7 +133,7 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
                     },
                     {
                         name: "Line 2",
-                        color: "orange",
+                        color: "white",
                         data: [
                             {
                                 t: 1741906800,
@@ -174,22 +174,22 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
             ];
             break;
 
-        case "color-status":
+        case "current-color":
 
             if (selectedColor) {
-                payload = { text: `The selected color is ${selectedColor}` };
+                payload = { text: `The selected color is:\n ${selectedColor}` };
             } else {
                 payload = {"text": "No color was selected so far"}
             }
             
             break;
 
-        case "color-action":
+        case "color-selection":
 
             if ("parameter" in body) {
                 if (body.parameter) {
                     selectedColor = body.parameter;
-                    payload = { text: `You selected color:\n ${body.parameter}` };
+                    payload = { text: `You selected the color:\n ${body.parameter}` };
                 } else {
                     selectedColor = null;
                     payload = { text: "You have reset the color" };
