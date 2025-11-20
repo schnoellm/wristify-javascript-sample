@@ -1,6 +1,7 @@
 import express from 'express'
 import basicAuth from 'express-basic-auth'
 import bodyParser from 'body-parser'
+import { createHash } from 'crypto';
 
 var selectedColor = null;
 
@@ -72,6 +73,15 @@ apiRouter.get("/endpoints", (req, res) => {
                 endpoints:["text-sample","image-sample","action-sample"]
             }
         ]
+    }
+
+    let payloadToHash = JSON.stringify(data);
+    let hash = createHash("sha256").update(payloadToHash).digest("base64");
+    data.hash = hash;
+
+    if (req.query.hashonly === "true") {
+        res.send({hash: data.hash});
+        return;
     }
 
     res.send(data);
