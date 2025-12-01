@@ -61,7 +61,12 @@ apiRouter.get("/endpoints", (req, res) => {
             {
                 id: "exit-on-back-behaviour",
                 name: "Exit on back behaviour",
-                description: "Shows how to exit the app from the payload loading properties object"
+                description: "Shows how to exit the app on back button"
+            },
+            {
+                id: "navigate-to-menu",
+                name: "Navigate back to menu",
+                description: "Shows how to navigate back to the menu on back button"
             }
         ],
         groups: [
@@ -79,7 +84,7 @@ apiRouter.get("/endpoints", (req, res) => {
             },
             {
                 name: "Third group",
-                endpoints: ["exit-on-back-behaviour"]
+                endpoints: ["exit-on-back-behaviour","navigate-to-menu"]
             }
         ]
     }
@@ -244,6 +249,15 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
             payload = [
                 {text: "When pressing the back button, this will exit the app due to the passed backBehaviour property."},
                 {properties: {backBehaviour: "exit"}}
+            ];
+            
+            break;
+
+        case "navigate-to-menu":
+
+            payload = [
+                {text: "When pressing the back button, this will close the endpoint and navigate back to the menu."},
+                {properties: {backBehaviour: "toMenu"}}
             ];
             
             break;
