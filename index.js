@@ -53,10 +53,15 @@ apiRouter.get("/endpoints", (req, res) => {
                 name: "Color selection",
                 description: "Choose a color for the trend"
             },
-                        {
+            {
                 id: "current-color",
                 name: "Current color",
                 description: "Shows the currently selected color"
+            },
+            {
+                id: "exit-on-back-behaviour",
+                name: "Exit on back behaviour",
+                description: "Shows how to exit the app from the payload loading properties object"
             }
         ],
         groups: [
@@ -71,6 +76,10 @@ apiRouter.get("/endpoints", (req, res) => {
             {
                 name: "Second group",
                 endpoints:["text-sample","image-sample","action-sample"]
+            },
+            {
+                name: "Third group",
+                endpoints: ["exit-on-back-behaviour"]
             }
         ]
     }
@@ -227,6 +236,15 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
                     {name:"third action", parameter: ["list1","list2","list3"], description:"description of third action"}]
                 }]
             }
+            
+            break;
+
+        case "exit-on-back-behaviour":
+
+            payload = [
+                {text: "Some sample text, that can be displayed on the Wristify Garmin Widget."},
+                {properties: {backBehaviour: "exit"}}
+            ];
             
             break;
 
