@@ -242,7 +242,7 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
         case "exit-on-back-behaviour":
 
             payload = [
-                {text: "Some sample text, that can be displayed on the Wristify Garmin Widget."},
+                {text: "When pressing the back button, this will exit the app due to the passed backBehaviour property."},
                 {properties: {backBehaviour: "exit"}}
             ];
             
