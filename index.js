@@ -64,9 +64,9 @@ apiRouter.get("/endpoints", (req, res) => {
                 description: "Shows how to exit the app on back button"
             },
             {
-                id: "navigate-to-menu",
-                name: "Navigate back to menu",
-                description: "Shows how to navigate back to the menu on back button"
+                id: "navigation-sample",
+                name: "Navigation sample",
+                description: "Shows how to navigate based on payload responses"
             }
         ],
         groups: [
@@ -84,7 +84,7 @@ apiRouter.get("/endpoints", (req, res) => {
             },
             {
                 name: "Third group",
-                endpoints: ["exit-on-back-behaviour","navigate-to-menu"]
+                endpoints: ["exit-on-back-behaviour","navigation-sample"]
             }
         ]
     }
@@ -253,12 +253,21 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
             
             break;
 
-        case "navigate-to-menu":
+        case "navigation-sample":
 
-            payload = [
-                {text: "When pressing the back button, this will close the endpoint and navigate back to the menu."},
-                {properties: {backBehaviour: "toMenu"}}
-            ];
+            if (body.parameter) {
+                payload = [
+                    { text: `Received the option:\n ${body.parameter}` },
+                    {properties: {backBehaviour: body.parameter}}
+                ];
+            } else {
+                payload = [{"text": "Select one of the following back behaviours to try out on the next page:"},
+                    { actions: [
+                        {name:"single", parameter: "single", description:"Navigate back a single page"},
+                        {name:"toMenu", parameter: "toMenu", description:"Navigate back to the menu directly"},
+                        {name:"exit", parameter: "exit", description:"Exit the app"}]
+                }]
+            }
             
             break;
 
