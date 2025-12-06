@@ -39,6 +39,11 @@ apiRouter.get("/endpoints", (req, res) => {
                 description: "Displays a sample trend"
             },
             {
+                id: "bar-chart-sample",
+                name: "Bar Chart sample",
+                description: "Displays a sample bar chart"
+            },
+            {
                 id: "image-sample",
                 name: "Image sample",
                 description: "Displays a random image"
@@ -76,7 +81,7 @@ apiRouter.get("/endpoints", (req, res) => {
             },
             {
                 name: "First group",
-                endpoints: ["trend-sample", "color-selection", "current-color"]
+                endpoints: ["trend-sample", "bar-chart-sample", "color-selection", "current-color"]
             },
             {
                 name: "Second group",
@@ -183,6 +188,66 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
                     }
                 ]
             };
+            break;
+
+        case "bar-chart-sample":
+
+            payload = [{
+                "chart": {
+                    "options": {
+                        "type": "bar",
+                        "labelsX": {
+                            "0": "Mon",
+                            "1": "Tue",
+                            "2": "Wed",
+                            "3": "Thu",
+                            "4": "Fri",
+                            "5": "Sat",
+                            "6": "Sun"
+                        }
+                    },
+                    "datasets": [{
+                        "name":"Set 1",
+                        "color":"red",
+                        "data": [
+                            {"x":0,"y":1},
+                            {"x":1,"y":2},
+                            {"x":2,"y":3},
+                            {"x":3,"y":4},
+                            {"x":4,"y":5},
+                            {"x":5,"y":6},
+                            {"x":6,"y":7},
+                        ]
+                    },
+                    {
+                        "name":"Set 2",
+                        "color":"dark blue",
+                        "data": [
+                            {"x":0,"y":5},
+                            {"x":1,"y":6},
+                            {"x":2,"y":7},
+                            {"x":3,"y":8},
+                            {"x":4,"y":9},
+                            {"x":5,"y":10},
+                            {"x":6,"y":11},
+                        ]
+                    },
+                    {
+                        "name":"Set 3",
+                        "color":"yellow",
+                        "data": [
+                            {"x":0,"y":6},
+                            {"x":1,"y":4},
+                            {"x":2,"y":2},
+                            {"x":3,"y":0},
+                            {"x":4,"y":2},
+                            {"x":5,"y":4},
+                            {"x":6,"y":6},
+                        ]
+                    }]
+                }
+            }];
+
             break;
 
         case "image-sample":
