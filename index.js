@@ -90,11 +90,11 @@ apiRouter.get("/endpoints", (req, res) => {
             },
             {
                 name: "Second group",
-                endpoints:["text-sample","image-sample","action-sample"]
+                endpoints: ["text-sample", "image-sample", "action-sample"]
             },
             {
                 name: "Third group",
-                endpoints: ["exit-on-back-behaviour","navigation-sample"]
+                endpoints: ["exit-on-back-behaviour", "navigation-sample"]
             },
             {
                 name: "Fourth group",
@@ -108,7 +108,7 @@ apiRouter.get("/endpoints", (req, res) => {
     data.hash = hash;
 
     if (req.query.hashonly === "true") {
-        res.send({hash: data.hash});
+        res.send({ hash: data.hash });
         return;
     }
 
@@ -125,12 +125,12 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
     switch (endpointId) {
         case "instructions":
             payload = [
-                {text: "Wristify allows you to easily access your custom REST web service from your Garmin watch."},
-                {text: "In order to do so, you need to implement and host your own REST web service."},
-                {text: "This way you can implement custom actions and provide desired information and data to the watch via a predefined API specification."},
-                {text: "To implement your own service, check out the description in the garmin store and the instructions in the linked GitHub repository."},
-                {text: "The sample code of this API, which you are currently accessing, is available as nodejs sample on GitHub as well."},
-                {text: "Happy coding!"}
+                { text: "Wristify allows you to easily access your custom REST web service from your Garmin watch." },
+                { text: "In order to do so, you need to implement and host your own REST web service." },
+                { text: "This way you can implement custom actions and provide desired information and data to the watch via a predefined API specification." },
+                { text: "To implement your own service, check out the description in the garmin store and the instructions in the linked GitHub repository." },
+                { text: "The sample code of this API, which you are currently accessing, is available as nodejs sample on GitHub as well." },
+                { text: "Happy coding!" }
             ]
             break;
 
@@ -216,42 +216,42 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
                         }
                     },
                     "datasets": [{
-                        "name":"Set 1",
-                        "color":"red",
+                        "name": "Set 1",
+                        "color": "red",
                         "data": [
-                            {"x":0,"y":1},
-                            {"x":1,"y":2},
-                            {"x":2,"y":3},
-                            {"x":3,"y":4},
-                            {"x":4,"y":5},
-                            {"x":5,"y":6},
-                            {"x":6,"y":7},
+                            { "x": 0, "y": 1 },
+                            { "x": 1, "y": 2 },
+                            { "x": 2, "y": 3 },
+                            { "x": 3, "y": 4 },
+                            { "x": 4, "y": 5 },
+                            { "x": 5, "y": 6 },
+                            { "x": 6, "y": 7 },
                         ]
                     },
                     {
-                        "name":"Set 2",
-                        "color":"dark blue",
+                        "name": "Set 2",
+                        "color": "dark blue",
                         "data": [
-                            {"x":0,"y":5},
-                            {"x":1,"y":6},
-                            {"x":2,"y":7},
-                            {"x":3,"y":8},
-                            {"x":4,"y":9},
-                            {"x":5,"y":10},
-                            {"x":6,"y":11},
+                            { "x": 0, "y": 5 },
+                            { "x": 1, "y": 6 },
+                            { "x": 2, "y": 7 },
+                            { "x": 3, "y": 8 },
+                            { "x": 4, "y": 9 },
+                            { "x": 5, "y": 10 },
+                            { "x": 6, "y": 11 },
                         ]
                     },
                     {
-                        "name":"Set 3",
-                        "color":"yellow",
+                        "name": "Set 3",
+                        "color": "yellow",
                         "data": [
-                            {"x":0,"y":6},
-                            {"x":1,"y":4},
-                            {"x":2,"y":2},
-                            {"x":3,"y":0},
-                            {"x":4,"y":2},
-                            {"x":5,"y":4},
-                            {"x":6,"y":6},
+                            { "x": 0, "y": 6 },
+                            { "x": 1, "y": 4 },
+                            { "x": 2, "y": 2 },
+                            { "x": 3, "y": 0 },
+                            { "x": 4, "y": 2 },
+                            { "x": 5, "y": 4 },
+                            { "x": 6, "y": 6 },
                         ]
                     }]
                 }
@@ -261,90 +261,93 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
 
         case "pie-chart-sample":
 
-            payload = {
-                "options": {
-                    "type": "pie"
-                },
-                "datasets":
-                    [
-                        {
-                            "name": "Categories",
-                            "data": [
-                                {
-                                    "name": "Category 1",
-                                    "value": 1.2,
-                                    "color": "red"
-                                },
-                                {
-                                    "name": "Category 2",
-                                    "value": 2.8,
-                                    "color": "blue"
-                                },
-                                {
-                                    "name": "Category 3",
-                                    "value": 6.4,
-                                    "color": "orange"
-                                },
-                                {
-                                    "name": "Category 4",
-                                    "value": 3.1,
-                                    "color": "white"
-                                },
-                                {
-                                    "name": "Category 5",
-                                    "value": 4.5,
-                                    "color": "green"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "Transporation",
-                            "data": [
-                                {
-                                    "name": "Car",
-                                    "value": 4,
-                                    "color": "yellow"
-                                },
-                                {
-                                    "name": "Bus",
-                                    "value": 2,
-                                    "color": "green"
-                                },
-                                {
-                                    "name": "Ship",
-                                    "value": 1,
-                                    "color": "blue"
-                                },
-                                {
-                                    "name": "Train",
-                                    "value": 6,
-                                    "color": "red"
-                                },
-                                {
-                                    "name": "Plane",
-                                    "value": 2,
-                                    "color": "white"
-                                },
-                                {
-                                    "name": "Bicycle",
-                                    "value": 10,
-                                    "color": "pink"
-                                }
-                            ]
-                        }
-                ]
-            };
+            payload = [{
+                "chart": {
+                    "options": {
+                        "type": "pie"
+                    },
+                    "datasets":
+                        [
+                            {
+                                "name": "Categories",
+                                "data": [
+                                    {
+                                        "name": "Category 1",
+                                        "value": 1.2,
+                                        "color": "red"
+                                    },
+                                    {
+                                        "name": "Category 2",
+                                        "value": 2.8,
+                                        "color": "blue"
+                                    },
+                                    {
+                                        "name": "Category 3",
+                                        "value": 6.4,
+                                        "color": "orange"
+                                    },
+                                    {
+                                        "name": "Category 4",
+                                        "value": 3.1,
+                                        "color": "white"
+                                    },
+                                    {
+                                        "name": "Category 5",
+                                        "value": 4.5,
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Transporation",
+                                "data": [
+                                    {
+                                        "name": "Car",
+                                        "value": 4,
+                                        "color": "yellow"
+                                    },
+                                    {
+                                        "name": "Bus",
+                                        "value": 2,
+                                        "color": "green"
+                                    },
+                                    {
+                                        "name": "Ship",
+                                        "value": 1,
+                                        "color": "blue"
+                                    },
+                                    {
+                                        "name": "Train",
+                                        "value": 6,
+                                        "color": "red"
+                                    },
+                                    {
+                                        "name": "Plane",
+                                        "value": 2,
+                                        "color": "white"
+                                    },
+                                    {
+                                        "name": "Bicycle",
+                                        "value": 10,
+                                        "color": "pink"
+                                    }
+                                ]
+                            }
+                        ]
+                }
+            }];
 
             break;
 
         case "image-sample":
             payload = [
-                {text: "Random image from picsum.photos"},
-                {image: {
-                    url: "https://picsum.photos/200/100",
-                    width: 200,
-                    height: 100,
-                    "open-on-mobile": true
+                { text: "Random image from picsum.photos" },
+                {
+                    image: {
+                        url: "https://picsum.photos/200/100",
+                        width: 200,
+                        height: 100,
+                        "open-on-mobile": true
                     }
                 }
             ];
@@ -355,9 +358,9 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
             if (selectedColor) {
                 payload = { text: `The selected color is:\n ${selectedColor}` };
             } else {
-                payload = {"text": "No color was selected so far"}
+                payload = { "text": "No color was selected so far" }
             }
-            
+
             break;
 
         case "color-selection":
@@ -371,16 +374,17 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
                     payload = { text: `You selected the color:\n ${body.parameter}` };
                 }
             } else {
-                payload = [{"text": "Select your favourite color:"},
-                    { actions: [
-                        {name:"blue", parameter: "blue", description:"I like the color blue"},
-                        {name:"red", parameter: "red", description:"I like the color red"},
-                        {name:"green", parameter: "green", description:"I like the color green"},
-                        {name:"reset", parameter: "reset", description:"Reset the selected color"},
+                payload = [{ "text": "Select your favourite color:" },
+                {
+                    actions: [
+                        { name: "blue", parameter: "blue", description: "I like the color blue" },
+                        { name: "red", parameter: "red", description: "I like the color red" },
+                        { name: "green", parameter: "green", description: "I like the color green" },
+                        { name: "reset", parameter: "reset", description: "Reset the selected color" },
                     ]
                 }]
             }
-            
+
             break;
 
         case "action-sample":
@@ -388,21 +392,22 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
             if (body.parameter) {
                 payload = { text: `received parameter:\n ${JSON.stringify(body.parameter, null, 2)}` };
             } else {
-                payload = [{"text": "Select one of the following actions:"},{ actions: [{name:"first action", parameter: "first parameter", description:"description of first action"},
-                    {name:"second action", parameter: {field1: "second parameter", random: Math.random()*100}, description:"description of second action"},
-                    {name:"third action", parameter: ["list1","list2","list3"], description:"description of third action"}]
+                payload = [{ "text": "Select one of the following actions:" }, {
+                    actions: [{ name: "first action", parameter: "first parameter", description: "description of first action" },
+                    { name: "second action", parameter: { field1: "second parameter", random: Math.random() * 100 }, description: "description of second action" },
+                    { name: "third action", parameter: ["list1", "list2", "list3"], description: "description of third action" }]
                 }]
             }
-            
+
             break;
 
         case "exit-on-back-behaviour":
 
             payload = [
-                {text: "When pressing the back button, this will exit the app due to the passed backBehaviour property."},
-                {properties: {backBehaviour: "exit"}}
+                { text: "When pressing the back button, this will exit the app due to the passed backBehaviour property." },
+                { properties: { backBehaviour: "exit" } }
             ];
-            
+
             break;
 
         case "navigation-sample":
@@ -410,17 +415,18 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
             if (body.parameter) {
                 payload = [
                     { text: `Received the option:\n ${body.parameter}` },
-                    {properties: {backBehaviour: body.parameter}}
+                    { properties: { backBehaviour: body.parameter } }
                 ];
             } else {
-                payload = [{"text": "Select one of the following back behaviours to try out on the next page:"},
-                    { actions: [
-                        {name:"single", parameter: "single", description:"Navigate back a single page"},
-                        {name:"toMenu", parameter: "toMenu", description:"Navigate back to the menu directly"},
-                        {name:"exit", parameter: "exit", description:"Exit the app"}]
+                payload = [{ "text": "Select one of the following back behaviours to try out on the next page:" },
+                {
+                    actions: [
+                        { name: "single", parameter: "single", description: "Navigate back a single page" },
+                        { name: "toMenu", parameter: "toMenu", description: "Navigate back to the menu directly" },
+                        { name: "exit", parameter: "exit", description: "Exit the app" }]
                 }]
             }
-            
+
             break;
 
         default:
