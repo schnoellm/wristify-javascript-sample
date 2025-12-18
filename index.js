@@ -44,6 +44,11 @@ apiRouter.get("/endpoints", (req, res) => {
                 description: "Displays a sample bar chart"
             },
             {
+                id: "pie-chart-sample",
+                name: "Pie Chart sample",
+                description: "Displays a pie bar chart"
+            },
+            {
                 id: "image-sample",
                 name: "Image sample",
                 description: "Displays a random image"
@@ -81,7 +86,7 @@ apiRouter.get("/endpoints", (req, res) => {
             },
             {
                 name: "First group",
-                endpoints: ["trend-sample", "bar-chart-sample", "color-selection", "current-color"]
+                endpoints: ["trend-sample", "bar-chart-sample", "pie-chart-sample"]
             },
             {
                 name: "Second group",
@@ -90,6 +95,10 @@ apiRouter.get("/endpoints", (req, res) => {
             {
                 name: "Third group",
                 endpoints: ["exit-on-back-behaviour","navigation-sample"]
+            },
+            {
+                name: "Fourth group",
+                endpoints: ["color-selection", "current-color"]
             }
         ]
     }
@@ -247,6 +256,84 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
                     }]
                 }
             }];
+
+            break;
+
+        case "pie-chart-sample":
+
+            payload = {
+                "options": {
+                    "type": "pie"
+                },
+                "datasets":
+                    [
+                        {
+                            "name": "Categories",
+                            "data": [
+                                {
+                                    "name": "Category 1",
+                                    "value": 1.2,
+                                    "color": "red"
+                                },
+                                {
+                                    "name": "Category 2",
+                                    "value": 2.8,
+                                    "color": "blue"
+                                },
+                                {
+                                    "name": "Category 3",
+                                    "value": 6.4,
+                                    "color": "orange"
+                                },
+                                {
+                                    "name": "Category 4",
+                                    "value": 3.1,
+                                    "color": "white"
+                                },
+                                {
+                                    "name": "Category 5",
+                                    "value": 4.5,
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Transporation",
+                            "data": [
+                                {
+                                    "name": "Car",
+                                    "value": 4,
+                                    "color": "yellow"
+                                },
+                                {
+                                    "name": "Bus",
+                                    "value": 2,
+                                    "color": "green"
+                                },
+                                {
+                                    "name": "Ship",
+                                    "value": 1,
+                                    "color": "blue"
+                                },
+                                {
+                                    "name": "Train",
+                                    "value": 6,
+                                    "color": "red"
+                                },
+                                {
+                                    "name": "Plane",
+                                    "value": 2,
+                                    "color": "white"
+                                },
+                                {
+                                    "name": "Bicycle",
+                                    "value": 10,
+                                    "color": "pink"
+                                }
+                            ]
+                        }
+                ]
+            };
 
             break;
 
