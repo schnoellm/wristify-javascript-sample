@@ -77,6 +77,11 @@ apiRouter.get("/endpoints", (req, res) => {
                 id: "navigation-sample",
                 name: "Navigation sample",
                 description: "Shows how to navigate based on payload responses"
+            },
+            {
+                id: "graphics-sample",
+                name: "Graphics sample",
+                description: "Shows how to draw graphics based on payload responses"
             }
         ],
         groups: [
@@ -98,7 +103,7 @@ apiRouter.get("/endpoints", (req, res) => {
             },
             {
                 name: "Fourth group",
-                endpoints: ["color-selection", "current-color"]
+                endpoints: ["color-selection", "current-color", "graphics-sample"]
             }
         ]
     }
@@ -427,6 +432,35 @@ apiRouter.post("/endpoints/:id", async (req, res) => {
                 }]
             }
 
+            break;
+
+        case "graphics-sample":
+            payload = [{
+                "graphics": [
+                    { "setColor": [0x555555, 0xAA0000] },
+                    { "setPenWidth": 0.02 },
+                    { "drawArc": [0.5, 0.5, 0.25, 0.0, 10.3, 250.6] },
+                    { "drawCircle": [0.3, 0.3, 0.25] },
+                    { "setColor": [0xFFAA00, -1] },
+                    { "drawEllipse": [0.5, 0.4, 0.1, 0.2] },
+                    { "drawLine": [0.25, 0.3, 0.9, 0.75] },
+                    { "setColor": [0x00AAFF, -1] },
+                    { "drawPoint": [0.25, 0.75] },
+                    { "drawRectangle": [0.2, 0.2, 0.4, 0.2] },
+                    { "drawRoundedRectangle": [0.5, 0.4, 0.2, 0.4, 0.05] },
+                    { "drawText": [0.3, 0.3, 0, "hello", 0] },
+                    { "setColor": [0xAA00FF, -1] },
+                    { "fillCircle": [0.6, 0.3, 0.25] },
+                    { "setColor": [0xAAAAAA, -1] },
+                    { "fillEllipse": [0.5, 0.4, 0.2, 0.3] },
+                    { "setColor": [0xFF5500, -1] },
+                    { "fillRectangle": [0.2, 0.2, 0.4, 0.2] },
+                    { "setColor": [0xAA0000, -1] },
+                    { "fillRoundedRectangle": [0.3, 0.1, 0.4, 0.2, 0.1] },
+                    { "setColor": [0x00FF00, 0x00FF00] },
+                    { "fillPolygon": [[0.9, 0.5], [0.643, 0.356], [0.5, 0.1], [0.356, 0.356], [0.1, 0.5], [0.356, 0.643], [0.5, 0.9], [0.643, 0.643]] },
+                ]
+            }];
             break;
 
         default:
